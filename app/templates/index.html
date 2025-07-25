@@ -1,0 +1,30 @@
+<!-- app/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crack Image Segmentation</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crack Image Segmentation</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if orig_img %}
+        <div class="images">
+            <div>
+                <h3>Ảnh gốc</h3>
+                <img src="data:image/png;base64,{{ orig_img }}">
+            </div>
+            <div>
+                <h3>Mask dự đoán</h3>
+                <img src="data:image/png;base64,{{ mask_img }}">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
